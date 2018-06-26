@@ -1,10 +1,10 @@
 {
-  "name": "discord-bot",
+  "name": "motoo-api",
   "version": "0.0.1",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sbhr/discord-bot.git"
+    "url": "git+https://github.com/sbhr/motoo-api.git"
   },
   "author": "",
   "license": "ISC",
@@ -19,12 +19,12 @@
     "cors": "^2.8.4",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
-    "express": "~4.15.5",
+    "express": "^4.16.3",
     "forever": "^0.15.3",
     "lodash": "^4.17.4",
     "moment": "^2.19.2",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5",
-    "sqlite3": "^3.1.13"
+    "sqlite3": "^4.0.1"
   }
 }
