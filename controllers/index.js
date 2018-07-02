@@ -1,9 +1,9 @@
-const BotDb = require('../../lib/bot-db');
+const BotDb = require('../lib/db');
 
 const dbPath = process.env.DB_PATH || '';
 const botDb = new BotDb(dbPath);
 
-const getAllWords = async (req, res, next) => {
+const getAllWords = async (req, res) => {
   try {
     const words = await botDb.getAllWords();
     res.status(200).json(words);
@@ -12,8 +12,8 @@ const getAllWords = async (req, res, next) => {
   }
 };
 
-const getWord = async (req, res, next) => {
-  const id = req.query.id;
+const getWord = async (req, res) => {
+  const { id } = req.query;
 
   try {
     const word = await botDb.getWord(id);
@@ -23,9 +23,8 @@ const getWord = async (req, res, next) => {
   }
 };
 
-const postWord = async (req, res, next) => {
-  const keyword = req.body.keyword;
-  const response = req.body.response;
+const postWord = async (req, res) => {
+  const { keyword, response } = req.body;
 
   try {
     await botDb.insertWord(keyword, response);
@@ -35,26 +34,24 @@ const postWord = async (req, res, next) => {
   }
 };
 
-const deleteWord = async (req, res, next) => {
-  const id = req.body.id;
+const deleteWord = async (req, res) => {
+  const { id } = req.body;
 
   try {
     await botDb.deleteWord(id);
     res.status(200).end();
-  } catch (err){
+  } catch (err) {
     res.status(500).json(err);
   }
 };
 
-const updateWord = async (req, res, next) => {
-  const id = req.body.id;
-  const keyword = req.body.keyword;
-  const response = req.body.response;
+const updateWord = async (req, res) => {
+  const { id, keyword, response } = req.body;
 
   try {
     await botDb.updateWord(id, keyword, response);
     res.status(200).end();
-  } catch (err){
+  } catch (err) {
     res.status(500).json(err);
   }
 };
